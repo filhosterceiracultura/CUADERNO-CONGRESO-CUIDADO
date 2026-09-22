@@ -1,0 +1,7 @@
+V37 — CADERNO ESPECIAL DEL EVENTO
+Versión simplificada para el congreso:
+- escritura solamente por teclado;
+- sin dictado por voz;
+- sin bolígrafo, resaltador ni borrador manual;
+- conserva formato de texto, páginas, fecha, marcadores y stickers;
+- Deshacer actúa sobre el texto digitado.

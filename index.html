@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4b174f">
+
+  <title>Mi Cuaderno del Congreso</title>
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+<style id="v37-simple-mode">
+/* V37: versão simples do congresso — somente digitação */
+[data-tool], .dictation-control, #voiceStatus, #strokeSizeControl,
+#eraserControls, #colors, #highColors, #textBtn {display:none!important}
+</style>
+<style id="v38-ui">
+#highBtn{display:inline-flex!important}
+#penBtn,#eraserBtn,#voiceBtn,#voiceStatus,.offline-note{display:none!important}
+.instagram-hotspot{position:absolute;left:25%;right:22%;bottom:1.3%;height:5.7%;z-index:20;display:block}
+#pdfBtn{border:1px solid #e6dce3;background:#fff;border-radius:9px;padding:7px 10px;font-weight:600}
+</style>
+<style id="v40-sticker-ribbon">
+/* Faixa compacta de stickers */
+#stickerModal .panel-card{width:min(920px,96vw)!important;max-width:none!important;padding:8px 12px!important;border-radius:12px!important;background:#d9b7f0!important;box-shadow:0 5px 14px #35134330!important}
+#stickerModal .panel-card>h2,#stickerModal .panel-card>p,#stickerModal .modal-close{display:none!important}
+#stickerModal{align-items:flex-start!important;padding-top:72px!important;background:transparent!important;pointer-events:none}
+#stickerModal .panel-card{pointer-events:auto}
+.sticker-language-home{display:flex!important;grid-template-columns:none!important;align-items:center!important;justify-content:center!important;gap:4px!important;margin:0!important;flex-wrap:nowrap!important}
+.sticker-language-home button{min-height:0!important;margin:0!important;padding:6px 12px!important;border:0!important;border-radius:9px!important;background:linear-gradient(#8b4caf,#64217f)!important;color:#fff!important;font-size:13px!important;font-weight:700!important;box-shadow:inset 0 1px 0 #ffffff70,0 2px 4px #42145235!important;white-space:nowrap!important}
+.sticker-language-home button:active{transform:translateY(1px)}
+.sticker-chosen-header{margin:4px 0!important}
+#stickerCollections{background:#fff;border-radius:12px;margin-top:8px;max-height:60vh;overflow:auto}
+#stickerModal [id*="addSticker"],#stickerModal .add-sticker-btn{display:none!important}
+@media(max-width:620px){
+ #stickerModal{padding-top:62px!important}
+ #stickerModal .panel-card{width:98vw!important;padding:6px!important;overflow-x:auto!important}
+ .sticker-language-home{justify-content:flex-start!important;min-width:max-content!important}
+ .sticker-language-home button{font-size:11px!important;padding:5px 8px!important}
+}
+</style>
+
+<style id="v41-final-ribbon">
+/* Segunda capa: nome centralizado */
+#ownerName{text-align:center!important}
+.owner-saved-row{justify-content:center!important}
+#ownerDisplay{display:block!important;flex:1;text-align:center!important}
+
+/* Botões discretos de navegação */
+.quiet-cover-btn,.quiet-close-btn{
+  border:1px solid rgba(83,30,86,.22)!important;background:rgba(255,255,255,.82)!important;
+  color:#511354!important;border-radius:9px!important;padding:6px 10px!important;
+  font-size:12px!important;font-weight:600!important;box-shadow:0 2px 8px rgba(45,18,48,.10)!important
+}
+.exit-cover-btn{position:absolute!important;right:18px!important;bottom:18px!important;z-index:15!important}
+#app header{position:relative}
+.quiet-close-btn{margin-left:auto!important}
+
+/* Stickers: faixa dentro do sistema, logo abaixo da barra */
+#stickerPanel.panel{
+  position:static!important;inset:auto!important;width:100%!important;height:auto!important;
+  background:transparent!important;padding:0 8px!important;margin:0!important;
+  display:block!important;z-index:auto!important
+}
+#stickerPanel.panel.hidden{display:none!important}
+#stickerPanel .panel-card.sticker-library{
+  width:100%!important;max-width:none!important;margin:0!important;padding:5px 8px!important;
+  border:0!important;border-radius:0 0 10px 10px!important;
+  background:linear-gradient(180deg,#d9b8ef,#caa0e5)!important;
+  box-shadow:0 3px 7px rgba(66,20,82,.18)!important
+}
+#stickerPanel h2,#stickerPanel .sticker-intro,#stickerPanel .close{display:none!important}
+#stickerLanguageHome{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:4px!important;margin:0!important;flex-wrap:nowrap!important
+}
+#stickerLanguageHome button{
+  min-height:0!important;padding:5px 11px!important;margin:0!important;
+  border:1px solid rgba(83,26,99,.24)!important;border-radius:8px!important;
+  background:linear-gradient(180deg,#8d4db1,#682483)!important;color:white!important;
+  font-size:12px!important;font-weight:700!important;line-height:1.2!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.40),0 2px 4px rgba(64,18,79,.22)!important;
+  white-space:nowrap!important
+}
+#stickerLanguageHome button:active{transform:translateY(1px)!important}
+#stickerChosenHeader{margin:5px 0!important}
+#stickerCollections{
+  background:#fff!important;border-radius:10px!important;margin-top:6px!important;
+  max-height:48vh!important;overflow:auto!important;padding:6px!important
+}
+@media(max-width:600px){
+ #stickerPanel.panel{padding:0 3px!important;overflow-x:auto!important}
+ #stickerPanel .panel-card.sticker-library{min-width:max-content!important;padding:4px!important}
+ #stickerLanguageHome{justify-content:flex-start!important}
+ #stickerLanguageHome button{font-size:10.5px!important;padding:5px 7px!important}
+}
+</style>
+
+<style id="v42-final-tweaks">
+/* Rodapé da segunda capa mais discreto, sem alterar a arte aprovada */
+.second-wrap::after{
+  content:"";position:absolute;left:16%;right:14%;bottom:0.9%;height:7.2%;
+  background:rgba(50,11,58,.18);border-radius:8px;pointer-events:none;z-index:5
+}
+.instagram-hotspot{z-index:20!important}
+/* Só a primeira linha compacta de opções dos stickers */
+#stickerPanel .sticker-upload-row,
+#stickerPanel .upload-own-stickers,
+#stickerPanel label[for="stickerUpload"]{display:none!important}
+</style>
+
+<style id="v43-fixes">
+.congress-title{display:flex!important;align-items:center!important}
+.congress-title strong{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(18px,2.15vw,29px)!important;
+  font-weight:500!important;font-style:italic!important;
+  letter-spacing:.2px!important;color:#fff!important
+}
+#stickerPanel .upload-row,#stickerPanel .sticker-upload,
+#stickerPanel .custom-sticker-upload,#stickerPanel .upload-own-stickers{display:none!important}
+</style>
+
+<style id="v44-sticker-one-category">
+#stickerCollections.hidden{display:none!important}
+#stickerCollections .sticker-single-collection{width:100%!important}
+#stickerCollections .sticker-single-collection .sticker-column-grid{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr))!important;
+  gap:8px!important
+}
+@media(max-width:600px){
+ #stickerCollections .sticker-single-collection .sticker-column-grid{
+   grid-template-columns:repeat(2,minmax(120px,1fr))!important
+ }
+}
+</style>
+
+<style id="v46-symbol-preview-fix">
+/* Símbolos sempre inteiros e centralizados na biblioteca */
+#stickerCollections .sticker-choice{
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:112px!important;
+  padding:14px!important;
+}
+#stickerCollections .sticker-choice img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:82%!important;
+  max-height:82px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+</style>
+
+<style id="v47-symbol-root-fix">
+#stickerCollections,
+#stickerCollections .sticker-single-collection,
+#stickerCollections .sticker-column-grid,
+#stickerCollections .sticker-choice{overflow:visible!important}
+#stickerCollections .sticker-choice{
+  min-height:118px!important;padding:12px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important
+}
+#stickerCollections .sticker-choice img{
+  width:auto!important;height:auto!important;
+  max-width:90%!important;max-height:90px!important;
+  object-fit:contain!important
+}
+</style>
+
+<style id="v48-symbol-card-fix">
+#stickerCollections{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:12px!important;
+}
+#stickerCollections .sticker-single-collection,
+#stickerCollections .sticker-column-grid{
+  overflow:visible!important;
+}
+#stickerCollections .sticker-column-grid{
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr))!important;
+  gap:14px!important;
+}
+#stickerCollections .sticker-choice{
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:132px!important;
+  min-height:132px!important;
+  padding:18px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+#stickerCollections .sticker-choice img{
+  position:static!important;
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:96px!important;
+  margin:auto!important;
+  object-fit:contain!important;
+  transform:none!important;
+}
+@media(max-width:600px){
+ #stickerCollections .sticker-column-grid{
+   grid-template-columns:repeat(2,minmax(130px,1fr))!important;
+ }
+ #stickerCollections .sticker-choice{
+   height:126px!important;min-height:126px!important;padding:16px!important;
+ }
+ #stickerCollections .sticker-choice img{max-height:92px!important}
+}
+</style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       1. CAPA PRINCIPAL DO CONGRESSO
+       ========================================================= -->
+  <section id="cover" class="cover-screen">
+    <img
+      src="assets/portada-congreso.png"
+      alt="Primer Congreso Latinoamericano de Cuidado Integral del Misionero"
+    >
+
+    <button id="openSecond" type="button">
+      Abrir mi cuaderno
+    </button>
+    <button id="exitNotebook" class="quiet-cover-btn exit-cover-btn" type="button">Salir</button>
+  </section>
+
+
+  <!-- =========================================================
+       2. SEGUNDA CAPA — MI CUADERNO
+       A placa de nome é do SISTEMA, não faz parte da imagem.
+       ========================================================= -->
+  <section id="second" class="cover-screen second-cover hidden">
+    <div class="second-wrap">
+
+      <img
+        src="assets/portada-cuaderno.png"
+        alt="Mi Cuaderno del Congreso"
+      ><a class="instagram-hotspot" href="https://www.instagram.com/ftc.raizesemmovimento/" target="_blank" rel="noopener" aria-label="Instagram FTC"></a>
+
+      <!-- Placa para digitar o nome pela primeira vez -->
+      <div id="ownerBox" class="owner-box">
+        <div class="owner-title">
+          ESTE CUADERNO PERTENECE A
+        </div>
+
+        <input
+          id="ownerName"
+          type="text"
+          maxlength="60"
+          placeholder="Escribe tu nombre"
+          autocomplete="name"
+        >
+
+        <button id="saveOwner" type="button">
+          Entrar →
+        </button>
+      </div>
+
+      <!-- Placa mostrada depois que o nome já foi salvo -->
+      <div id="ownerFixed" class="owner-fixed hidden">
+        <div class="owner-title">
+          ESTE CUADERNO PERTENECE A
+        </div>
+
+        <div class="owner-saved-row">
+          <strong id="ownerDisplay"></strong>
+
+          <button id="enterOwned" type="button">
+            Entrar →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       3. CADERNO DIGITAL
+       ========================================================= -->
+  <main id="app" class="hidden">
+
+    <!-- Cabeçalho -->
+    <header>
+      <div class="brand-title congress-title">
+        <strong>Cuidado Integral del Misionero</strong>
+      </div>
+      <button id="closeNotebook" class="quiet-close-btn" type="button">Cerrar</button>
+
+      <nav aria-label="Navegación de páginas">
+        <button id="prev" type="button">‹</button>
+        <span id="pageNo">Página 1</span>
+        <button id="next" type="button">›</button>
+        <button id="newPage" type="button">+ Nueva página</button>
+      </nav>
+    </header>
+
+
+    <!-- Barra de ferramentas -->
+    <section class="toolbar" aria-label="Herramientas">
+      <button data-tool="pen" type="button">✒ Bolígrafo</button>
+      <button data-tool="highlight" type="button">▰ Resaltador</button>
+      <button data-tool="eraser" type="button">⌫ Borrador</button>
+
+      <button id="textBtn" class="active" type="button">T Texto</button>
+      <div id="textControls" class="text-controls" aria-label="Formato del texto">
+        <div class="text-highlight-tool">
+<button id="textHighlightBtn" type="button">▰ Resaltar</button>
+<div id="textHighlightPalette" class="text-highlight-palette hidden">
+<button data-hl="#fff200" title="Amarillo neón"></button>
+<button data-hl="#b7ff00" title="Verde limón"></button>
+<button data-hl="#ff4fd8" title="Rosa fluorescente"></button>
+<button data-hl="#22d9ff" title="Azul cian"></button>
+</div></div><button id="boldBtn" type="button" title="Negrita"><strong>B</strong></button>
+        <button data-text-color="#111111" style="--c:#111111" type="button" title="Negro"></button>
+        <button data-text-color="#7b174f" style="--c:#7b174f" type="button" title="Vino"></button>
+        <button data-text-color="#005bbb" style="--c:#005bbb" type="button" title="Azul"></button>
+        <button data-text-color="#00875a" style="--c:#00875a" type="button" title="Verde"></button>
+        <button data-text-color="#d92965" style="--c:#d92965" type="button" title="Rosa"></button>
+      </div>
+      <div class="dictation-control"><button id="voiceBtn" type="button">🎙 Dictar</button></div>
+      <button id="pdfBtn" type="button" title="Guardar mi cuaderno en PDF">⇩ PDF</button><button id="stickersBtn" type="button">♡ Stickers</button>
+      <button id="undo" type="button">↶ Deshacer</button>
+
+      <label id="strokeSizeControl">
+        Grosor
+        <input id="size" type="range" min="2" max="28" value="4">
+      </label>
+
+      <div id="eraserControls" class="eraser-controls hidden" aria-label="Tamaño del borrador">
+        <span>Borrador</span>
+        <button type="button" data-eraser-size="18">S</button>
+        <button type="button" data-eraser-size="36" class="active">M</button>
+        <button type="button" data-eraser-size="64">L</button>
+        <button type="button" data-eraser-size="105">XL</button>
+        <input id="eraserSize" type="range" min="10" max="130" value="36" title="Tamaño del borrador">
+      </div>
+
+      <span id="voiceStatus" class="voice-status hidden" role="status">🎙 Escuchando…</span>
+
+      <!-- Cores da caneta -->
+      <div id="colors" aria-label="Colores del bolígrafo">
+        <button data-color="#2c2140" style="--c:#2c2140" type="button"></button>
+        <button data-color="#7b284f" style="--c:#7b284f" type="button"></button>
+        <button data-color="#1f5f52" style="--c:#1f5f52" type="button"></button>
+        <button data-color="#245ea8" style="--c:#245ea8" type="button"></button>
+        <button data-color="#111111" style="--c:#111111" type="button"></button>
+      </div>
+
+      <!-- Cores do marca-texto -->
+      <div id="highColors" class="hidden" aria-label="Colores del resaltador">
+        <button data-hcolor="#fff25a" style="--c:#fff25a" type="button"></button>
+        <button data-hcolor="#65ff73" style="--c:#65ff73" type="button"></button>
+        <button data-hcolor="#ff70b8" style="--c:#ff70b8" type="button"></button>
+        <button data-hcolor="#57d9ff" style="--c:#57d9ff" type="button"></button>
+      </div>
+    </section>
+
+
+    <!-- Página do caderno -->
+    <div id="stickerPanel" class="panel hidden">
+    <div class="panel-card sticker-library">
+<div id="stickerLanguageHome" class="sticker-language-home">
+<button data-lang="pt">Português</button><button data-lang="es">Español</button>
+<button data-lang="en">English</button><button data-lang="symbols">Símbolos</button><button id="addStickerRibbonBtn" type="button">+ Añadir stickers</button>
+</div>
+<div id="stickerChosenHeader" class="sticker-chosen-header hidden"><button id="stickerBack" type="button">← Idiomas</button><strong id="stickerLangTitle"></strong></div>
+<div id="stickerCollections"></div>
+<input id="stickerUpload" type="file" accept="image/*" multiple hidden aria-hidden="true">
+</div>
+  </div>
+
+<section class="paper-wrap">
+      <article id="paper" class="paper">
+
+        <label class="date">
+          Fecha:
+          <input id="date" type="date">
+        </label>
+
+        <textarea
+          id="text"
+          placeholder="Escribe aquí tus notas, ideas y reflexiones…"
+        ></textarea>
+
+        <canvas id="canvas"></canvas>
+        <div id="stickerLayer"></div>
+
+      </article>
+    </section>
+
+
+    <!-- Rodapé -->
+    <footer>
+      <span>Guardado automáticamente en este dispositivo</span>
+
+      <button id="exportBtn" type="button">
+        Exportar copia
+      </button>
+
+      <label class="import">
+        Importar copia
+        <input id="importFile" type="file" accept="application/json">
+      </label>
+    </footer>
+
+  </main>
+
+
+  <!-- =========================================================
+       4. PAINEL DE STICKERS
+       Português e Español ficam separados.
+       Cada sticker inserido permanece independente na página.
+       ========================================================= -->
+  
+
+  <!-- =========================================================
+       5. JAVASCRIPT PRINCIPAL
+       ========================================================= -->
+  <script src="app.js"></script>
+
+</body>
+</html>

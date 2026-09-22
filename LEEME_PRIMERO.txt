@@ -1,0 +1,9 @@
+CUADERNO DEL CONGRESO — V18
+
+Los stickers incluidos por el cuaderno están en:
+stickers/Português/
+
+El sistema los muestra automáticamente al pulsar “Stickers”.
+La opción “Añadir mis propios stickers” sigue disponible para que cada persona agregue sus propios archivos.
+
+No mover ni renombrar la carpeta stickers ni sus archivos sin actualizar app.js.
