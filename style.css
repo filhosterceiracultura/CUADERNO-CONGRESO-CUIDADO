@@ -372,3 +372,61 @@
 .sticker-chosen-header{display:flex;align-items:center;gap:12px;margin:14px 0}.sticker-chosen-header.hidden{display:none}
 #stickerBack{border:1px solid #eadce3;border-radius:10px;background:#fff;padding:8px 12px}
 @media(max-width:600px){.panel-card.sticker-library{width:94vw;max-height:86vh;overflow:auto}.sticker-language-home{grid-template-columns:1fr 1fr}.toolbar{gap:5px}.toolbar button{font-size:13px}}
+
+/* V54 — correções móveis na origem */
+html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+#app{width:100%;max-width:100%;overflow-x:hidden!important}
+@media(max-width:720px){
+  header{width:100%!important;max-width:100%!important;overflow:hidden!important}
+  header nav{
+    width:100%!important;max-width:100%!important;
+    overflow-x:auto!important;overflow-y:hidden!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .toolbar{
+    width:100%!important;max-width:100%!important;
+    overflow:visible!important;flex-wrap:wrap!important;
+    position:relative!important;
+  }
+  #textControls{max-width:100%!important;flex-wrap:wrap!important}
+  .text-highlight-tool{position:static!important}
+  .text-highlight-palette{
+    position:absolute!important;
+    left:8px!important;right:auto!important;top:auto!important;
+    margin-top:54px!important;
+    z-index:999!important;
+    display:flex!important;
+    gap:9px!important;
+    padding:9px 12px!important;
+    background:#fff!important;
+    border-radius:12px!important;
+    box-shadow:0 6px 20px #32112c44!important;
+    overflow:visible!important;
+  }
+  .text-highlight-palette.hidden{display:none!important}
+  .text-highlight-palette button{
+    width:30px!important;height:30px!important;min-width:30px!important;
+    padding:0!important;display:block!important;
+  }
+  .paper-wrap{
+    width:100%!important;max-width:100%!important;
+    padding:8px!important;overflow:hidden!important;
+  }
+  .paper{width:100%!important;max-width:100%!important;margin:0!important}
+  #stickerLayer,.placed-sticker{touch-action:none!important}
+}
+
+/* V56 — editor por trechos + caneta exclusiva de ressaltador */
+#text.rich-editor{
+  position:absolute;z-index:2;inset:62px 42px 38px 42px;border:0;outline:0;
+  background:transparent;font:18px/1.65 Georgia,serif;color:#29232d;
+  overflow:auto;white-space:pre-wrap;word-break:break-word;
+  -webkit-user-select:text;user-select:text;
+}
+#text.rich-editor:empty:before{content:attr(data-placeholder);color:#9b959c;pointer-events:none}
+.toolbar [data-tool="pen"],.toolbar [data-tool="eraser"],#colors,#eraserControls,#strokeSizeControl{display:none!important}
+#textHighlightBtn{display:none!important}
+@media(max-width:720px){
+  #text.rich-editor{inset:58px 22px 25px;font-size:16px}
+  #highColors{display:flex;flex:0 0 auto;overflow:visible!important}
+}
