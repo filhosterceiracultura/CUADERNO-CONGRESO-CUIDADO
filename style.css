@@ -430,3 +430,95 @@ html,body{width:100%;max-width:100%;overflow-x:hidden!important}
   #text.rich-editor{inset:58px 22px 25px;font-size:16px}
   #highColors{display:flex;flex:0 0 auto;overflow:visible!important}
 }
+
+/* Versão sem ressaltador — removido a pedido */
+#highlighterBtn,#textHighlightBtn,#highColors,#textHighlightPalette,
+.text-highlight-tool,.text-highlight-palette{display:none!important;}
+
+/* V57 — layout responsivo único: celular, tablet e computador */
+html,body{
+  margin:0!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow-x:clip!important;
+}
+body,#cover,#second,#app,header,.toolbar,.paper-wrap,footer{
+  min-width:0!important;
+  max-width:100%!important;
+}
+img,svg,canvas{max-width:100%}
+#app{width:100%!important;overflow-x:clip!important}
+header{width:100%!important;flex-wrap:wrap!important}
+header>*{min-width:0!important}
+header nav{
+  min-width:0!important;
+  max-width:100%!important;
+  flex-wrap:wrap!important;
+  overflow:visible!important;
+}
+.toolbar{
+  width:100%!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  overflow:visible!important;
+}
+.toolbar>*{min-width:0!important;max-width:100%!important}
+.paper-wrap{
+  width:100%!important;
+  padding:clamp(6px,2vw,18px)!important;
+  overflow:clip!important;
+}
+.paper{
+  width:min(900px,100%)!important;
+  max-width:100%!important;
+  min-width:0!important;
+  height:clamp(520px,72vh,1100px)!important;
+  margin-inline:auto!important;
+}
+#cover,.second-cover{
+  width:100%!important;
+  max-width:100%!important;
+  overflow:clip!important;
+}
+#cover>img,.second-wrap>img{
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+}
+.second-wrap{
+  max-width:100%!important;
+  min-width:0!important;
+}
+.panel{max-width:100%!important;overflow:clip!important}
+.panel-card,.sticker-library{
+  width:min(760px,calc(100vw - 24px))!important;
+  max-width:calc(100vw - 24px)!important;
+  min-width:0!important;
+}
+.sticker-language-columns,
+.sticker-grid,.builtin-grid,.art-sticker-grid{
+  min-width:0!important;
+  max-width:100%!important;
+}
+@media(max-width:900px){
+  header{align-items:flex-start!important}
+  .paper{width:100%!important}
+}
+@media(max-width:720px){
+  header{padding:9px 10px!important}
+  header strong{font-size:clamp(17px,5vw,21px)!important}
+  header nav{width:100%!important}
+  .toolbar{padding:7px!important;gap:5px!important}
+  .toolbar button,.toolbar .upload,.toolbar .import{
+    flex:0 1 auto!important;
+    white-space:normal!important;
+  }
+  .paper-wrap{padding:6px!important}
+  .paper{height:72dvh!important;min-height:500px!important}
+  footer{width:100%!important;padding:8px 10px!important;flex-wrap:wrap!important}
+}
+@media(min-width:721px) and (max-width:1100px){
+  .paper{width:min(92vw,900px)!important}
+}

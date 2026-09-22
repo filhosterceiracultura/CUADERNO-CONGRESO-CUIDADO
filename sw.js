@@ -1,4 +1,4 @@
-const C='cuaderno-cuidado-v56';
+const C='cuaderno-cuidado-v57-responsive';
 const A=["./", "index.html", "style.css", "app.js", "manifest.webmanifest", "assets/portada-congreso.png", "assets/portada-cuaderno.png", "assets/simbolo-dina.png", "assets/comibam.png", "assets/ctc.png", "assets/philhos.png",];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

@@ -1,1 +1,20 @@
-{"name":"Mi Cuaderno — Cuidado Integral del Misionero","short_name":"Mi Cuaderno","description":"Cuaderno digital del Primer Congreso Latinoamericano de Cuidado Integral del Misionero.","start_url":"./","display":"standalone","background_color":"#fbf6ea","theme_color":"#4b174f","lang":"es","icons":[{"src":"assets/simbolo-dina.png","sizes":"1024x1024","type":"image/png","purpose":"any maskable"}]}
+{
+  "name": "Mi Cuaderno — Cuidado Integral del Misionero",
+  "short_name": "Mi Cuaderno",
+  "description": "Cuaderno digital del Congreso de Cuidado Integral del Misionero.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#54155b",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "icone-congresso.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "id": "./",
+  "scope": "./"
+}
